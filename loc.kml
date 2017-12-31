@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.0">
+<Document>
+<Style id="z1">
+<IconStyle><Icon><href>http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png</href></Icon></IconStyle>
+</Style>
+<Placemark><name>Sal</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.28947390000002,34.019476</coordinates></Point>
+</Placemark>
+<Placemark><name>Expo/Vermont</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.29182609999998,34.018314</coordinates></Point>
+</Placemark>
+<Placemark><name>Jeff/Vermont</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.29186199999998,34.025635</coordinates></Point>
+</Placemark>
+<Placemark><name>Fig/Jeff</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.280257,34.021573</coordinates></Point>
+</Placemark>
+<Placemark><name>Fig/Expo</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.2823512,34.0185928</coordinates></Point>
+</Placemark>
+<Placemark><name>Literatea</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.28329889999998,34.02019</coordinates></Point>
+</Placemark>
+<Placemark><name>CoffeeBean</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.28650049999999,34.0235777</coordinates></Point>
+</Placemark>
+<Placemark><name>Starbucks</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.2823603,34.0212824</coordinates></Point>
+</Placemark>
+<Placemark><name>Gateway</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.2801154,34.02318959999999</coordinates></Point>
+</Placemark>
+<Placemark>
+	<Polygon> 
+		<outerBoundaryIs>  
+			<LinearRing>  
+  				<coordinates>
+			   	-118.2918261,34.018314,0 
+			   	-118.291862,34.025635,0
+			   	-118.2801154,34.0231896,0
+			   	-118.280257,34.021573,0
+   				-118.2823512,34.0185928,0
+  			 	-118.2918261,34.018314,0
+  				</coordinates>
+ 			</LinearRing> 
+ 		</outerBoundaryIs> 
+ 	</Polygon>
+
+ 	<Style id="polygon_style">
+ 		<LineStyle>
+ 			<color>ff000000</color>
+ 			<width>1</width>
+ 		</LineStyle>
+ 		<PolyStyle>
+ 			<color>7FAAAAAA</color>
+ 			<fill>1</fill>
+ 			<outline>1</outline>
+ 		</PolyStyle>
+ 	</Style>
+</Placemark>
+
+<Placemark>
+  <LineString>
+    <extrude>1</extrude>
+    <tessellate>1</tessellate>
+    <coordinates>-118.2801154,34.02318959999999,0  -118.280257,34.021573,0</coordinates>
+  </LineString>
+</Placemark>
+
+<Placemark>
+  <LineString>
+    <extrude>1</extrude>
+    <tessellate>1</tessellate>
+    <coordinates>-118.2801154,34.02318959999999,0  -118.2823603,34.0212824,0</coordinates>
+  </LineString>
+</Placemark>
+
+<Placemark>
+  <LineString>
+    <extrude>1</extrude>
+    <tessellate>1</tessellate>
+    <coordinates>-118.2801154,34.02318959999999,0  -118.28329889999998,34.02019,0</coordinates>
+  </LineString>
+</Placemark>
+
+</Document>
+</kml>

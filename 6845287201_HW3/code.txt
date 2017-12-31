@@ -1,0 +1,161 @@
+// add postgis
+CREATE postgis;
+
+// make convex hull polygon
+select ST_AsText (
+ST_ConvexHull (
+ST_Collect (ST_GeomFromText ('MULTIPOINT(-118.28947390000002 34.019476, 
+-118.29182609999998 34.018314, 
+-118.29186199999998 34.025635, 
+-118.280257 34.021573,
+-118.2823512 34.0185928,
+-118.28329889999998 34.02019,
+-118.28650049999999 34.0235777,
+-118.2823603 34.0212824,
+-118.2801154 34.02318959999999)')
+)));
+
+result: 
+ st_astext
+ POLYGON((-118.2918261 34.018314,-118.291862 34.025635,-118.2801154 34.0231896,-118.280257 34.021573,-118.2823512 34.0185928,-118.2918261 34.018314))
+
+ 
+ // create table to store all coordinates and distances
+create table USC (
+location text,
+distance float
+);
+
+// insert distances from gateway into table
+insert into USC values ('-118.28947390000002,34.019476',(select ST_Distance (
+ST_Collect (ST_GeomFromText ('POINT(-118.2801154 34.02318959999999)')),ST_Collect (ST_GeomFromText ('POINT(-118.28947390000002 34.019476)')))));
+insert into USC values ('-118.29182609999998,34.018314',(select ST_Distance (
+ST_Collect (ST_GeomFromText ('POINT(-118.2801154 34.02318959999999)')),ST_Collect (ST_GeomFromText ('POINT(-118.29182609999998 34.018314)')))));
+insert into USC values ('-118.29186199999998,34.025635',(select ST_Distance (
+ST_Collect (ST_GeomFromText ('POINT(-118.2801154 34.02318959999999)')),ST_Collect (ST_GeomFromText ('POINT(-118.29186199999998 34.025635)')))));
+insert into USC values ('-118.280257,34.021573',(select ST_Distance (
+ST_Collect (ST_GeomFromText ('POINT(-118.2801154 34.02318959999999)')),ST_Collect (ST_GeomFromText ('POINT(-118.280257 34.021573)')))));
+insert into USC values ('-118.2823512,34.0185928',(select ST_Distance (
+ST_Collect (ST_GeomFromText ('POINT(-118.2801154 34.02318959999999)')),ST_Collect (ST_GeomFromText ('POINT(-118.2823512 34.0185928)')))));
+insert into USC values ('-118.28329889999998,34.02019',(select ST_Distance (
+ST_Collect (ST_GeomFromText ('POINT(-118.2801154 34.02318959999999)')),ST_Collect (ST_GeomFromText ('POINT(-118.28329889999998 34.02019)')))));
+insert into USC values ('-118.28650049999999,34.0235777',(select ST_Distance (
+ST_Collect (ST_GeomFromText ('POINT(-118.2801154 34.02318959999999)')),ST_Collect (ST_GeomFromText ('POINT(-118.28650049999999 34.0235777)')))));
+insert into USC values ('-118.2823603,34.0212824',(select ST_Distance (
+ST_Collect (ST_GeomFromText ('POINT(-118.2801154 34.02318959999999)')),ST_Collect (ST_GeomFromText ('POINT(-118.2823603 34.0212824)')))));
+
+
+// create table of min locations
+create table minnies (
+minlocs text );
+
+// run (1) and (2) a total of 3 times 
+
+// (1) insert into table
+insert into minnies values ((select location
+from USC
+where distance = ((select min(distance)
+					from USC))));
+
+// (2) remove from other table
+delete from USC
+where location = (select location
+from USC
+where distance = (	(select min(distance)
+					from USC)));
+
+// get 3 locations nearest my location
+select * from minnies;
+
+// result: 
+           minlocs
+------------------------------
+ -118.280257,34.021573
+ -118.2823603,34.0212824
+ -118.28329889999998,34.02019
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// select 3 nearest neighbors to gateway 
+select ST_Distance (
+ST_Collect (ST_GeomFromText ('POINT(-118.2801154 34.02318959999999)')),ST_Collect (ST_GeomFromText ('POINT(-118.28947390000002 34.019476)')));
+select ST_Distance (
+ST_Collect (ST_GeomFromText ('POINT(-118.2801154 34.02318959999999)')),ST_Collect (ST_GeomFromText ('POINT(-118.28947390000002 34.019476)')));
+select ST_Distance (
+ST_Collect (ST_GeomFromText ('POINT(-118.2801154 34.02318959999999)')),ST_Collect (ST_GeomFromText ('POINT(-118.28947390000002 34.019476)')));
+select ST_Distance (
+ST_Collect (ST_GeomFromText ('POINT(-118.2801154 34.02318959999999)')),ST_Collect (ST_GeomFromText ('POINT(-118.28947390000002 34.019476)')));
+select ST_Distance (
+ST_Collect (ST_GeomFromText ('POINT(-118.2801154 34.02318959999999)')),ST_Collect (ST_GeomFromText ('POINT(-118.28947390000002 34.019476)')));
+select ST_Distance (
+ST_Collect (ST_GeomFromText ('POINT(-118.2801154 34.02318959999999)')),ST_Collect (ST_GeomFromText ('POINT(-118.28947390000002 34.019476)')));
+select ST_Distance (
+ST_Collect (ST_GeomFromText ('POINT(-118.2801154 34.02318959999999)')),ST_Collect (ST_GeomFromText ('POINT(-118.28947390000002 34.019476)')));
+select ST_Distance (
+ST_Collect (ST_GeomFromText ('POINT(-118.2801154 34.02318959999999)')),ST_Collect (ST_GeomFromText ('POINT(-118.28947390000002 34.019476)')));
+// returns table, figure out how to return just value
+
+
+ add this code: 
+<Placemark> 
+ <Polygon> <outerBoundaryIs>  <LinearRing>  
+  <coordinates>
+   -118.2918261, 34.018314, 0. 
+   -118.291862, 34.025635, 0.
+   -118.2801154, 34.0231896, 0.
+   -118.280257, 34.021573, 0. 
+   -118.2823512, 34.0185928, 0.
+   -118.2918261, 34.018314, 0.
+  </coordinates>
+ </LinearRing> </outerBoundaryIs> </Polygon>
+ <Style> 
+  <PolyStyle>  
+   <color>#a00000ff</color>
+  <outline>0</outline>
+  </PolyStyle> 
+ </Style>
+ </Placemark>
+
+ from sample2 i took out: 
+ <Placemark>
+    <styleUrl>#poly</styleUrl>
+        <Polygon>
+            <altitudeMode>relativeToGround</altitudeMode>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>
+-77.05844056290393,38.86996206506943,400 -77.05552622493516,38.868757801256,400 
+-77.05315536854791,38.87053267794386,400 -77.05465973756702,38.87291016281703,400 -77.05788457660967,38.87253259892824,400 -77.05844056290393,38.86996206506943,400 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+</Placemark>
+
+<Placemark>
+    <styleUrl>#poly</styleUrl>
+        <Polygon>
+            <altitudeMode>relativeToGround</altitudeMode>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>
+ -77.05844056290393,38.86996206506943,500 -77.05844056290393,38.86996206506943,400 -77.05552622493516,38.868757801256,400  -77.05552622493516,38.868757801256,500  -77.05844056290393,38.86996206506943,500
+</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+</Placemark>

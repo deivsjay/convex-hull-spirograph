@@ -1,0 +1,35 @@
+1. Salvatori Computer Science Center, Los Angeles, CA
+Lat: 34.019476
+Lon: -118.28947390000002
+
+2. Expo / Vermont Station
+Lat: 34.018314
+Lon: -118.29182609999998
+
+3. Jefferson / Vermont
+Lat: 34.025635
+Lon: -118.29186199999998
+
+4.USC - Figueroa & Jefferson
+Lat: 34.021573
+Lon: -118.280257
+
+5. Figueroa / Exposition 
+Lat: 34.0185928
+Lon: -118.2823512
+
+6. Literatea Cafe
+Lat: 34.02019
+Lon: -118.28329889999998
+
+7. Starbucks USC
+Lat: 34.0212824
+Lon: -118.2823603
+
+8. Coffee Bean and Tea Leaf Cafe
+Lat: 34.0235777
+Lon: -118.28650049999999
+
+9. University Gateway
+Lat: 34.02318959999999
+Lon: -118.2801154
